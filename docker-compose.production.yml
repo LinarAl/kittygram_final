@@ -1,0 +1,39 @@
+version: '3'
+
+volumes:
+  pg_data_production:
+  static_production:
+  media_production: 
+
+services:
+  db:
+    image: postgres:13
+    env_file: .env
+    volumes:
+      - pg_data_production:/var/lib/postgresql/data
+  backend:
+    image: linaral/kittygram_backend
+    env_file: .env
+    volumes:
+      - static_production:/static
+      - media_production:/app/media
+    depends_on:
+      - db
+  frontend:
+    env_file: .env
+    image: linaral/kittygram_frontend
+    command: cp -r /app/build/. /static/
+    volumes:
+      - static_production:/static
+    depends_on:
+      - backend
+  gateway:
+    image: linaral/kittygram_gateway
+    env_file: .env
+    ports:
+      - 9000:80
+    volumes:
+      - static_production:/static
+      - media_production:/app/media
+    depends_on:
+      - frontend
