@@ -8,7 +8,7 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    
+
     services:
       postgres:
         image: postgres:13        
@@ -169,4 +169,4 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: Деплой kittygram успешно выполнен! 
+        message: Деплой kittygram успешно выполнен!
