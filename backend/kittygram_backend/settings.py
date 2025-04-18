@@ -2,15 +2,20 @@
 import os
 from pathlib import Path
 
-from django.core.management.utils import get_random_secret_key
+# from django.core.management.utils import get_random_secret_key
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = get_random_secret_key()
+# SECRET_KEY = get_random_secret_key()
 
-DEBUG = os.getenv('DEBUG', 'false').lower == 'true'
+# DEBUG = os.getenv('DEBUG', 'false').lower == 'true'
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost, 127.0.0.1').split(',')
+# ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost, 127.0.0.1').split(',')
+SECRET_KEY = 'django-insecure-cg6*%6d51ef8f#4!r3*$vmxm4)abgjw8mo!4y-q*uq1!4$-89$'
+
+DEBUG = True
+
+ALLOWED_HOSTS = ['89.169.161.69', 'yc-kittygram.zapto.org']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
